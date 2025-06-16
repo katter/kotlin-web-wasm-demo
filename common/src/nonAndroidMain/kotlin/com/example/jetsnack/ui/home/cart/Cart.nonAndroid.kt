@@ -46,20 +46,21 @@ actual fun ActualCartItem(
     increaseItemCount: (Long) -> Unit,
     decreaseItemCount: (Long) -> Unit,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier
+    modifier: Modifier,
 ) {
     val snack = orderLine.snack
 
-    Row(modifier = modifier
-        .fillMaxWidth()
-        .clickable { onSnackClick(snack.id) }
-        .background(JetsnackTheme.colors.uiBackground)
-        .padding(horizontal = 24.dp)
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable { onSnackClick(snack.id) }
+            .background(JetsnackTheme.colors.uiBackground)
+            .padding(horizontal = 24.dp),
     ) {
         SnackImage(
             imageUrl = snack.imageUrl,
             contentDescription = null,
-            modifier = Modifier.padding(top = 4.dp).size(100.dp)
+            modifier = Modifier.padding(top = 4.dp).size(100.dp),
         )
         Column(modifier = Modifier.padding(12.dp).weight(1f)) {
             Text(
@@ -76,29 +77,28 @@ actual fun ActualCartItem(
                 text = formatPrice(snack.price),
                 style = MaterialTheme.typography.subtitle1,
                 color = JetsnackTheme.colors.textPrimary,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(top = 8.dp),
             )
         }
         Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.End) {
             IconButton(
                 onClick = { removeSnack(snack.id) },
-                modifier = Modifier.padding(top = 12.dp)
+                modifier = Modifier.padding(top = 12.dp),
             ) {
                 Icon(
                     imageVector = Icons.Filled.Close,
                     tint = JetsnackTheme.colors.iconSecondary,
-                    contentDescription = stringResource(MppR.string.label_remove)
+                    contentDescription = stringResource(MppR.string.label_remove),
                 )
             }
             QuantitySelector(
                 count = orderLine.count,
                 decreaseItemCount = { decreaseItemCount(snack.id) },
                 increaseItemCount = { increaseItemCount(snack.id) },
-                modifier = Modifier.padding(top = 12.dp)
+                modifier = Modifier.padding(top = 12.dp),
             )
         }
     }
-
 }
 
 @Composable

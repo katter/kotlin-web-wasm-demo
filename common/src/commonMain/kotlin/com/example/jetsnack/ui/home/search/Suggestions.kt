@@ -16,7 +16,7 @@
 
 package com.example.jetsnack.ui.home.search
 
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -40,7 +40,7 @@ import com.example.jetsnack.ui.theme.JetsnackTheme
 @Composable
 fun SearchSuggestions(
     suggestions: List<SearchSuggestionGroup>,
-    onSuggestionSelect: (String) -> Unit
+    onSuggestionSelect: (String) -> Unit,
 ) {
     LazyColumn {
         suggestions.forEach { suggestionGroup ->
@@ -51,7 +51,7 @@ fun SearchSuggestions(
                 Suggestion(
                     suggestion = suggestion,
                     onSuggestionSelect = onSuggestionSelect,
-                    modifier = Modifier.fillParentMaxWidth()
+                    modifier = Modifier.fillParentMaxWidth(),
                 )
             }
             item {
@@ -64,7 +64,7 @@ fun SearchSuggestions(
 @Composable
 private fun SuggestionHeader(
     name: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Text(
         text = name,
@@ -73,7 +73,7 @@ private fun SuggestionHeader(
         modifier = modifier
             .heightIn(min = 56.dp)
             .padding(horizontal = 24.dp, vertical = 4.dp)
-            .wrapContentHeight()
+            .wrapContentHeight(),
     )
 }
 
@@ -81,7 +81,7 @@ private fun SuggestionHeader(
 private fun Suggestion(
     suggestion: String,
     onSuggestionSelect: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Text(
         text = suggestion,
@@ -90,18 +90,18 @@ private fun Suggestion(
             .heightIn(min = 48.dp)
             .clickable { onSuggestionSelect(suggestion) }
             .padding(start = 24.dp)
-            .wrapContentSize(Alignment.CenterStart)
+            .wrapContentSize(Alignment.CenterStart),
     )
 }
 
-//@Preview
+// @Preview
 @Composable
 fun PreviewSuggestions() {
     JetsnackTheme {
         JetsnackSurface {
             SearchSuggestions(
                 suggestions = SearchRepo.getSuggestions(),
-                onSuggestionSelect = { }
+                onSuggestionSelect = { },
             )
         }
     }

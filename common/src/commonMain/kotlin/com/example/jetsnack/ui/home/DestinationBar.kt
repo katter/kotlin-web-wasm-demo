@@ -16,7 +16,7 @@
 
 package com.example.jetsnack.ui.home
 
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -45,7 +45,7 @@ fun DestinationBar(modifier: Modifier = Modifier) {
         TopAppBar(
             backgroundColor = JetsnackTheme.colors.uiBackground.copy(alpha = AlphaNearOpaque),
             contentColor = JetsnackTheme.colors.textSecondary,
-            elevation = 0.dp
+            elevation = 0.dp,
         ) {
             Text(
                 text = "Huidekoperstraat 26-28, 1017 ZM Amsterdam | https://kotl.in/wasm-gio23",
@@ -56,16 +56,16 @@ fun DestinationBar(modifier: Modifier = Modifier) {
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .weight(1f)
-                    .align(Alignment.CenterVertically)
+                    .align(Alignment.CenterVertically),
             )
             IconButton(
                 onClick = { /* todo */ },
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier.align(Alignment.CenterVertically),
             ) {
                 Icon(
                     imageVector = Icons.Outlined.ExpandMore,
                     tint = JetsnackTheme.colors.brand,
-                    contentDescription = stringResource(MppR.string.label_select_delivery)
+                    contentDescription = stringResource(MppR.string.label_select_delivery),
                 )
             }
         }
@@ -73,7 +73,7 @@ fun DestinationBar(modifier: Modifier = Modifier) {
     }
 }
 
-//@Preview
+// @Preview
 @Composable
 fun PreviewDestinationBar() {
     JetsnackTheme {

@@ -8,5 +8,5 @@ import androidx.compose.ui.unit.dp
 actual fun snackCollectionListItemWindowInsets(): WindowInsets {
     // TODO: implement
     // WindowInsets.statusBars.add(WindowInsets(top = 56.dp))
-    return WindowInsets(top =  56.dp)
+    return WindowInsets(top = 56.dp)
 }

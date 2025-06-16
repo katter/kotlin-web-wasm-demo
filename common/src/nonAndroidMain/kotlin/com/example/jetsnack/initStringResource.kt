@@ -28,7 +28,6 @@ fun buildStingsResources(): Map<Int, String> {
     strs[rs.reset] = "Reset"
     strs[rs.close] = "Close"
 
-
     strs[rs.work_in_progress] = "This is currently work in progress"
     strs[rs.grab_beverage] = "Grab a beverage and check back later!"
 
@@ -36,7 +35,6 @@ fun buildStingsResources(): Map<Int, String> {
     strs[rs.home_search] = "Search"
     strs[rs.home_cart] = "My Cart"
     strs[rs.home_profile] = "Profile"
-
 
     strs[rs.search_no_matches] = "No matches for “%1s”"
     strs[rs.search_no_matches_retry] = "Try broadening your search"
@@ -75,10 +73,12 @@ fun buildPluralResources(): Map<Int, PluralResource> {
     val plurals = mutableMapOf<Int, PluralResource>()
     val ps = MppR.plurals
 
-    plurals[ps.cart_order_count] = PluralResource(buildMap {
-        this["one"] = "%1d item"
-        this["other"] = "%1d items"
-    })
+    plurals[ps.cart_order_count] = PluralResource(
+        buildMap {
+            this["one"] = "%1d item"
+            this["other"] = "%1d items"
+        },
+    )
 
     return plurals
 }

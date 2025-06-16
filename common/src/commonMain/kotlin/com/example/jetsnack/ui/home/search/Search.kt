@@ -16,7 +16,7 @@
 
 package com.example.jetsnack.ui.home.search
 
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -66,7 +66,7 @@ import com.example.jetsnack.ui.utils.mirroringBackIcon
 fun Search(
     onSnackClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
-    state: SearchState = rememberSearchState()
+    state: SearchState = rememberSearchState(),
 ) {
     JetsnackSurface(modifier = modifier.fillMaxSize()) {
         Column {
@@ -77,7 +77,7 @@ fun Search(
                 searchFocused = state.focused,
                 onSearchFocusChange = { state.focused = it },
                 onClearQuery = { state.query = TextFieldValue("") },
-                searching = state.searching
+                searching = state.searching,
             )
             JetsnackDivider()
 
@@ -90,12 +90,12 @@ fun Search(
                 SearchDisplay.Categories -> SearchCategories(state.categories)
                 SearchDisplay.Suggestions -> SearchSuggestions(
                     suggestions = state.suggestions,
-                    onSuggestionSelect = { suggestion -> state.query = TextFieldValue(suggestion) }
+                    onSuggestionSelect = { suggestion -> state.query = TextFieldValue(suggestion) },
                 )
                 SearchDisplay.Results -> SearchResults(
                     state.searchResults,
                     state.filters,
-                    onSnackClick
+                    onSnackClick,
                 )
                 SearchDisplay.NoResults -> NoResults(state.query.text)
             }
@@ -115,7 +115,7 @@ private fun rememberSearchState(
     categories: List<SearchCategoryCollection> = SearchRepo.getCategories(),
     suggestions: List<SearchSuggestionGroup> = SearchRepo.getSuggestions(),
     filters: List<Filter> = SnackRepo.getFilters(),
-    searchResults: List<Snack> = emptyList()
+    searchResults: List<Snack> = emptyList(),
 ): SearchState {
     return remember {
         SearchState(
@@ -125,7 +125,7 @@ private fun rememberSearchState(
             categories = categories,
             suggestions = suggestions,
             filters = filters,
-            searchResults = searchResults
+            searchResults = searchResults,
         )
     }
 }
@@ -138,7 +138,7 @@ class SearchState(
     categories: List<SearchCategoryCollection>,
     suggestions: List<SearchSuggestionGroup>,
     filters: List<Filter>,
-    searchResults: List<Snack>
+    searchResults: List<Snack>,
 ) {
     var query by mutableStateOf(query)
     var focused by mutableStateOf(focused)
@@ -164,7 +164,7 @@ private fun SearchBar(
     onSearchFocusChange: (Boolean) -> Unit,
     onClearQuery: () -> Unit,
     searching: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     JetsnackSurface(
         color = JetsnackTheme.colors.uiFloated,
@@ -173,7 +173,7 @@ private fun SearchBar(
         modifier = modifier
             .fillMaxWidth()
             .height(56.dp)
-            .padding(horizontal = 24.dp, vertical = 8.dp)
+            .padding(horizontal = 24.dp, vertical = 8.dp),
     ) {
         Box(Modifier.fillMaxSize()) {
             if (query.text.isEmpty()) {
@@ -183,14 +183,14 @@ private fun SearchBar(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxSize()
-                    .wrapContentHeight()
+                    .wrapContentHeight(),
             ) {
                 if (searchFocused) {
                     IconButton(onClick = onClearQuery) {
                         Icon(
                             imageVector = mirroringBackIcon(),
                             tint = JetsnackTheme.colors.iconPrimary,
-                            contentDescription = stringResource(MppR.string.label_back)
+                            contentDescription = stringResource(MppR.string.label_back),
                         )
                     }
                 }
@@ -201,14 +201,14 @@ private fun SearchBar(
                         .weight(1f)
                         .onFocusChanged {
                             onSearchFocusChange(it.isFocused)
-                        }
+                        },
                 )
                 if (searching) {
                     CircularProgressIndicator(
                         color = JetsnackTheme.colors.iconPrimary,
                         modifier = Modifier
                             .padding(horizontal = 6.dp)
-                            .size(36.dp)
+                            .size(36.dp),
                     )
                 } else {
                     Spacer(Modifier.width(IconSize)) // balance arrow icon
@@ -226,22 +226,22 @@ private fun SearchHint() {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxSize()
-            .wrapContentSize()
+            .wrapContentSize(),
     ) {
         Icon(
             imageVector = Icons.Outlined.Search,
             tint = JetsnackTheme.colors.textHelp,
-            contentDescription = stringResource(MppR.string.label_search)
+            contentDescription = stringResource(MppR.string.label_search),
         )
         Spacer(Modifier.width(8.dp))
         Text(
             text = stringResource(MppR.string.search_jetsnack),
-            color = JetsnackTheme.colors.textHelp
+            color = JetsnackTheme.colors.textHelp,
         )
     }
 }
 
-//@Preview
+// @Preview
 @Composable
 private fun SearchBarPreview() {
     JetsnackTheme {
@@ -252,7 +252,7 @@ private fun SearchBarPreview() {
                 searchFocused = false,
                 onSearchFocusChange = { },
                 onClearQuery = { },
-                searching = false
+                searching = false,
             )
         }
     }

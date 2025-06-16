@@ -1,6 +1,5 @@
 package com.example.jetsnack.ui.utils
 
-
 private external object Intl {
     class NumberFormat(locales: String, options: JsAny) {
         fun format(l: Double): String

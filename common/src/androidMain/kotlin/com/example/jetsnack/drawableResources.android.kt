@@ -10,4 +10,3 @@ actual fun painterResource(id: Int): Painter {
 
 actual val MppR.drawable.empty_state_search: Int
     get() = R.drawable.empty_state_search
-

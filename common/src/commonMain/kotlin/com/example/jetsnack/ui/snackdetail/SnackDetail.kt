@@ -16,7 +16,7 @@
 
 package com.example.jetsnack.ui.snackdetail
 
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -114,7 +114,7 @@ private fun Header() {
         modifier = Modifier
             .height(280.dp)
             .fillMaxWidth()
-            .background(Brush.horizontalGradient(JetsnackTheme.colors.tornado1))
+            .background(Brush.horizontalGradient(JetsnackTheme.colors.tornado1)),
     )
 }
 
@@ -128,13 +128,13 @@ private fun Up(upPress: () -> Unit) {
             .size(36.dp)
             .background(
                 color = Neutral8.copy(alpha = 0.32f),
-                shape = CircleShape
-            )
+                shape = CircleShape,
+            ),
     ) {
         Icon(
             imageVector = mirroringBackIcon(),
             tint = JetsnackTheme.colors.iconInteractive,
-            contentDescription = stringResource(MppR.string.label_back)
+            contentDescription = stringResource(MppR.string.label_back),
         )
     }
 }
@@ -150,10 +150,10 @@ private fun Body(
             modifier = Modifier
                 .fillMaxWidth()
                 .jetSnackStatusBarsPadding()
-                .height(MinTitleOffset)
+                .height(MinTitleOffset),
         )
         Column(
-            modifier = Modifier.verticalScroll(scroll)
+            modifier = Modifier.verticalScroll(scroll),
         ) {
             Spacer(Modifier.height(GradientScroll))
             JetsnackSurface(Modifier.fillMaxWidth()) {
@@ -166,7 +166,7 @@ private fun Body(
                         text = stringResource(MppR.string.detail_header),
                         style = MaterialTheme.typography.overline,
                         color = JetsnackTheme.colors.textHelp,
-                        modifier = HzPadding
+                        modifier = HzPadding,
                     )
                     Spacer(Modifier.height(16.dp))
                     var seeMore by remember { mutableStateOf(true) }
@@ -176,7 +176,7 @@ private fun Body(
                         color = JetsnackTheme.colors.textHelp,
                         maxLines = if (seeMore) 5 else Int.MAX_VALUE,
                         overflow = TextOverflow.Ellipsis,
-                        modifier = HzPadding
+                        modifier = HzPadding,
                     )
                     val textButton = if (seeMore) {
                         stringResource(id = MppR.string.see_more)
@@ -194,21 +194,21 @@ private fun Body(
                             .padding(top = 15.dp)
                             .clickable {
                                 seeMore = !seeMore
-                            }
+                            },
                     )
                     Spacer(Modifier.height(40.dp))
                     Text(
                         text = stringResource(MppR.string.ingredients),
                         style = MaterialTheme.typography.overline,
                         color = JetsnackTheme.colors.textHelp,
-                        modifier = HzPadding
+                        modifier = HzPadding,
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
                         text = stringResource(MppR.string.ingredients_list),
                         style = MaterialTheme.typography.body1,
                         color = JetsnackTheme.colors.textHelp,
-                        modifier = HzPadding
+                        modifier = HzPadding,
                     )
 
                     Spacer(Modifier.height(16.dp))
@@ -219,7 +219,7 @@ private fun Body(
                             SnackCollection(
                                 snackCollection = snackCollection,
                                 onSnackClick = onSnackClick,
-                                highlight = false
+                                highlight = false,
                             )
                         }
                     }
@@ -228,7 +228,7 @@ private fun Body(
                         modifier = Modifier
                             .padding(bottom = BottomBarHeight)
                             .jetSnackNavigationBarsPadding()
-                            .height(8.dp)
+                            .height(8.dp),
                     )
                 }
             }
@@ -251,28 +251,28 @@ private fun Title(snack: Snack, scrollProvider: () -> Int) {
                 val offset = (maxOffset - scroll).coerceAtLeast(minOffset)
                 IntOffset(x = 0, y = offset.toInt())
             }
-            .background(color = JetsnackTheme.colors.uiBackground)
+            .background(color = JetsnackTheme.colors.uiBackground),
     ) {
         Spacer(Modifier.height(16.dp))
         Text(
             text = snack.name,
             style = MaterialTheme.typography.h4,
             color = JetsnackTheme.colors.textSecondary,
-            modifier = HzPadding
+            modifier = HzPadding,
         )
         Text(
             text = snack.tagline,
             style = MaterialTheme.typography.subtitle2,
             fontSize = 20.sp,
             color = JetsnackTheme.colors.textHelp,
-            modifier = HzPadding
+            modifier = HzPadding,
         )
         Spacer(Modifier.height(4.dp))
         Text(
             text = formatPrice(snack.price),
             style = MaterialTheme.typography.h6,
             color = JetsnackTheme.colors.textPrimary,
-            modifier = HzPadding
+            modifier = HzPadding,
         )
 
         Spacer(Modifier.height(8.dp))
@@ -283,7 +283,7 @@ private fun Title(snack: Snack, scrollProvider: () -> Int) {
 @Composable
 private fun Image(
     imageUrl: String,
-    scrollProvider: () -> Int
+    scrollProvider: () -> Int,
 ) {
     val collapseRange = with(LocalDensity.current) { (MaxTitleOffset - MinTitleOffset).toPx() }
     val collapseFractionProvider = {
@@ -292,12 +292,12 @@ private fun Image(
 
     CollapsingImageLayout(
         collapseFractionProvider = collapseFractionProvider,
-        modifier = HzPadding.then(Modifier.jetSnackStatusBarsPadding())
+        modifier = HzPadding.then(Modifier.jetSnackStatusBarsPadding()),
     ) {
         SnackImage(
             imageUrl = imageUrl,
             contentDescription = null,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
@@ -306,11 +306,11 @@ private fun Image(
 private fun CollapsingImageLayout(
     collapseFractionProvider: () -> Float,
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     Layout(
         modifier = modifier,
-        content = content
+        content = content,
     ) { measurables, constraints ->
         check(measurables.size == 1)
 
@@ -325,11 +325,11 @@ private fun CollapsingImageLayout(
         val imageX = lerp(
             (constraints.maxWidth - imageWidth) / 2, // centered when expanded
             constraints.maxWidth - imageWidth, // right aligned when collapsed
-            collapseFraction
+            collapseFraction,
         )
         layout(
             width = constraints.maxWidth,
-            height = imageY + imageWidth
+            height = imageY + imageWidth,
         ) {
             imagePlaceable.placeRelative(imageX, imageY)
         }
@@ -365,23 +365,23 @@ private fun CartBottomBar(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .jetSnackNavigationBarsPadding()
                     .then(HzPadding)
-                    .heightIn(min = BottomBarHeight)
+                    .heightIn(min = BottomBarHeight),
             ) {
                 QuantitySelector(
                     count = count,
                     decreaseItemCount = { if (count > 0) updateCount(count - 1) },
-                    increaseItemCount = { updateCount(count + 1) }
+                    increaseItemCount = { updateCount(count + 1) },
                 )
                 Spacer(Modifier.width(16.dp))
                 JetsnackButton(
                     onClick = { /* todo */ },
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
                 ) {
                     Text(
                         text = stringResource(MppR.string.add_to_cart),
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
-                        maxLines = 1
+                        maxLines = 1,
                     )
                 }
             }
@@ -393,14 +393,14 @@ expect fun Modifier.jetSnackNavigationBarsPadding(): Modifier
 expect fun Modifier.jetSnackStatusBarsPadding(): Modifier
 expect fun Modifier.jetSnackSystemBarsPadding(): Modifier
 
-//@Preview
+// @Preview
 @Composable
 private fun SnackDetailPreview() {
     JetsnackTheme {
         SnackDetail(
             snackId = 1L,
             upPress = { },
-            onSnackClick = { }
+            onSnackClick = { },
         )
     }
 }

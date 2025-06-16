@@ -17,12 +17,8 @@
 package com.example.jetsnack.ui
 
 import androidx.compose.material.ScaffoldState
-import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import com.example.jetsnack.model.SnackbarManager
 import com.example.jetsnack.ui.home.HomeSections
 import kotlinx.coroutines.CoroutineScope
@@ -37,7 +33,6 @@ object MainDestinations {
     const val SNACK_DETAIL_ROUTE = "snack"
     const val SNACK_ID_KEY = "snackId"
 }
-
 
 @Composable
 expect fun rememberMppJetsnackAppState(): MppJetsnackAppState
@@ -66,7 +61,7 @@ class JetsnackAppState(
 //    val navController: NavHostController,
     private val snackbarManager: SnackbarManager,
 //    private val resources: Resources,
-    coroutineScope: CoroutineScope
+    coroutineScope: CoroutineScope,
 ) {
     // Process snackbars coming from SnackbarManager
     init {
@@ -106,7 +101,7 @@ class JetsnackAppState(
     // ----------------------------------------------------------
 
     val currentRoute: String?
-        get() = HomeSections.FEED.route//navController.currentDestination?.route
+        get() = HomeSections.FEED.route // navController.currentDestination?.route
 
     fun upPress() {
 //        navController.navigateUp()
@@ -127,7 +122,7 @@ class JetsnackAppState(
     }
 
 //    fun navigateToSnackDetail(snackId: Long, from: NavBackStackEntry) {
-        // In order to discard duplicated navigation events, we check the Lifecycle
+    // In order to discard duplicated navigation events, we check the Lifecycle
 //        if (from.lifecycleIsResumed()) {
 //            navController.navigate("${MainDestinations.SNACK_DETAIL_ROUTE}/$snackId")
 //        }
@@ -139,10 +134,10 @@ class JetsnackAppState(
  *
  * This is used to de-duplicate navigation events.
  */
-//private fun NavBackStackEntry.lifecycleIsResumed() =
+// private fun NavBackStackEntry.lifecycleIsResumed() =
 //    this.getLifecycle().currentState == Lifecycle.State.RESUMED
 //
-//private val NavGraph.startDestination: NavDestination?
+// private val NavGraph.startDestination: NavDestination?
 //    get() = findNode(startDestinationId)
 
 /**
@@ -150,17 +145,17 @@ class JetsnackAppState(
  *
  * https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:navigation/navigation-ui/src/main/java/androidx/navigation/ui/NavigationUI.kt
  */
-//private tailrec fun findStartDestination(graph: NavDestination): NavDestination {
+// private tailrec fun findStartDestination(graph: NavDestination): NavDestination {
 //    return if (graph is NavGraph) findStartDestination(graph.startDestination!!) else graph
-//}
+// }
 
 /**
  * A composable function that returns the [Resources]. It will be recomposed when `Configuration`
  * gets updated.
  */
-//@Composable
-//@ReadOnlyComposable
-//private fun resources(): Resources {
+// @Composable
+// @ReadOnlyComposable
+// private fun resources(): Resources {
 //    LocalConfiguration.current
 //    return LocalContext.current.resources
-//}
+// }

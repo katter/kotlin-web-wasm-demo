@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 
 @Composable
 actual fun stringResource(id: Int): String {
-   return androidx.compose.ui.res.stringResource(id)
+    return androidx.compose.ui.res.stringResource(id)
 }
 
 @Composable
@@ -19,7 +19,6 @@ actual fun stringResource(id: Int, count: Int): String {
     return androidx.compose.ui.res.stringResource(id, count)
 }
 
-
 // Filters
 actual val MppR.string.label_filters: Int get() = R.string.label_filters
 
@@ -29,7 +28,6 @@ actual val MppR.string.quantity: Int get() = R.string.quantity
 actual val MppR.string.label_decrease: Int get() = R.string.label_decrease
 
 actual val MppR.string.label_increase: Int get() = R.string.label_increase
-
 
 // Snack detail
 actual val MppR.string.label_back: Int get() = R.string.label_back
@@ -50,7 +48,6 @@ actual val MppR.string.add_to_cart: Int get() = R.string.add_to_cart
 
 // Home
 actual val MppR.string.label_select_delivery: Int get() = R.string.label_select_delivery
-
 
 // Filter
 actual val MppR.string.max_calories: Int get() = R.string.max_calories
@@ -84,7 +81,6 @@ actual val MppR.string.home_cart: Int get() = R.string.home_cart
 
 actual val MppR.string.home_profile: Int get() = R.string.home_profile
 
-
 // Search
 actual val MppR.string.search_no_matches: Int get() = R.string.search_no_matches
 
@@ -100,7 +96,6 @@ actual val MppR.string.search_jetsnack: Int get() = R.string.search_jetsnack
 
 actual val MppR.string.cart_increase_error: Int get() = R.string.cart_increase_error
 actual val MppR.string.cart_decrease_error: Int get() = R.string.cart_decrease_error
-
 
 // Cart
 actual val MppR.plurals.cart_order_count: Int get() = R.plurals.cart_order_count

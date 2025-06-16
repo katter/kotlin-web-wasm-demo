@@ -32,7 +32,7 @@ import kotlin.AllowDifferentMembersInActual
  */
 fun CartViewModel.Companion.provideFactory(
     snackbarManager: SnackbarManager = SnackbarManager,
-    snackRepository: SnackRepo = SnackRepo
+    snackRepository: SnackRepo = SnackRepo,
 ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

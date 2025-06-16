@@ -48,7 +48,7 @@ fun JetsnackSurface(
     contentColor: Color = JetsnackTheme.colors.textSecondary,
     border: BorderStroke? = null,
     elevation: Dp = 0.dp,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     Box(
         modifier = modifier.shadow(elevation = elevation, shape = shape, clip = false)
@@ -56,9 +56,9 @@ fun JetsnackSurface(
             .then(if (border != null) Modifier.border(border, shape) else Modifier)
             .background(
                 color = getBackgroundColorForElevation(color, elevation),
-                shape = shape
+                shape = shape,
             )
-            .clip(shape)
+            .clip(shape),
     ) {
         CompositionLocalProvider(LocalContentColor provides contentColor, content = content)
     }

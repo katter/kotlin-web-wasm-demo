@@ -16,11 +16,15 @@ public val EmptyStateSearch: ImageVector
         if (_emptyStateSearch != null) {
             return _emptyStateSearch!!
         }
-        _emptyStateSearch = Builder(name = "EmptyStateSearch", defaultWidth = 341.0.dp,
-                defaultHeight = 179.0.dp, viewportWidth = 341.0f, viewportHeight = 179.0f).apply {
-            path(fill = SolidColor(Color(0xFFDDE3E8)), stroke = null, strokeLineWidth = 0.0f,
-                    strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                    pathFillType = NonZero) {
+        _emptyStateSearch = Builder(
+            name = "EmptyStateSearch", defaultWidth = 341.0.dp,
+            defaultHeight = 179.0.dp, viewportWidth = 341.0f, viewportHeight = 179.0f,
+        ).apply {
+            path(
+                fill = SolidColor(Color(0xFFDDE3E8)), stroke = null, strokeLineWidth = 0.0f,
+                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+                pathFillType = NonZero,
+            ) {
                 moveTo(302.676f, 111.056f)
                 lineTo(244.424f, 65.728f)
                 curveTo(234.123f, 57.654f, 224.238f, 49.061f, 214.807f, 39.98f)
@@ -32,17 +36,21 @@ public val EmptyStateSearch: ImageVector
                 lineTo(302.676f, 111.056f)
                 close()
             }
-            path(fill = SolidColor(Color(0xFFffffff)), stroke = null, strokeLineWidth = 0.0f,
-                    strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                    pathFillType = NonZero) {
+            path(
+                fill = SolidColor(Color(0xFFffffff)), stroke = null, strokeLineWidth = 0.0f,
+                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+                pathFillType = NonZero,
+            ) {
                 moveTo(288.225f, 120.035f)
                 arcToRelative(12.46f, 10.541f, 105.0f, true, false, 20.363f, 5.456f)
                 arcToRelative(12.46f, 10.541f, 105.0f, true, false, -20.363f, -5.456f)
                 close()
             }
-            path(fill = SolidColor(Color(0xFF3C4043)), stroke = null, strokeLineWidth = 0.0f,
-                    strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                    pathFillType = NonZero) {
+            path(
+                fill = SolidColor(Color(0xFF3C4043)), stroke = null, strokeLineWidth = 0.0f,
+                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+                pathFillType = NonZero,
+            ) {
                 moveTo(299.659f, 110.277f)
                 curveTo(304.701f, 111.618f, 309.064f, 114.797f, 311.893f, 119.193f)
                 lineTo(313.356f, 121.465f)
@@ -63,9 +71,11 @@ public val EmptyStateSearch: ImageVector
                 lineTo(299.659f, 110.277f)
                 close()
             }
-            path(fill = SolidColor(Color(0xFF3C4043)), stroke = null, strokeLineWidth = 0.0f,
-                    strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                    pathFillType = EvenOdd) {
+            path(
+                fill = SolidColor(Color(0xFF3C4043)), stroke = null, strokeLineWidth = 0.0f,
+                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+                pathFillType = EvenOdd,
+            ) {
                 moveTo(161.472f, 52.165f)
                 lineTo(151.381f, 69.821f)
                 verticalLineTo(69.849f)
@@ -117,7 +127,7 @@ public val EmptyStateSearch: ImageVector
                 close()
             }
         }
-        .build()
+            .build()
         return _emptyStateSearch!!
     }
 

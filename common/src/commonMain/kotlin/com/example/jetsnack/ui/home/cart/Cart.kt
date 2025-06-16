@@ -14,7 +14,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -39,12 +38,11 @@ import com.example.jetsnack.ui.theme.AlphaNearOpaque
 import com.example.jetsnack.ui.theme.JetsnackTheme
 import com.example.jetsnack.ui.utils.formatPrice
 
-
 @Composable
 fun Cart(
     onSnackClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: CartViewModel = provideCartViewModel()
+    viewModel: CartViewModel = provideCartViewModel(),
 ) {
     val orderLines by viewModel.collectOrderLinesAsState(viewModel.orderLines)
     val inspiredByCart = remember { SnackRepo.getInspiredByCart() }
@@ -55,7 +53,7 @@ fun Cart(
         decreaseItemCount = viewModel::decreaseSnackCount,
         inspiredByCart = inspiredByCart,
         onSnackClick = onSnackClick,
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
@@ -73,7 +71,7 @@ expect fun ActualCartItem(
     increaseItemCount: (Long) -> Unit,
     decreaseItemCount: (Long) -> Unit,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 )
 
 @Composable
@@ -84,7 +82,7 @@ fun Cart(
     decreaseItemCount: (Long) -> Unit,
     inspiredByCart: SnackCollection,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     JetsnackSurface(modifier = modifier.fillMaxSize()) {
         Box {
@@ -95,7 +93,7 @@ fun Cart(
                 decreaseItemCount = decreaseItemCount,
                 inspiredByCart = inspiredByCart,
                 onSnackClick = onSnackClick,
-                modifier = Modifier.align(Alignment.TopCenter)
+                modifier = Modifier.align(Alignment.TopCenter),
             )
             DestinationBar(modifier = Modifier.align(Alignment.TopCenter))
             CheckoutBar(modifier = Modifier.align(Alignment.BottomCenter))
@@ -118,10 +116,12 @@ private fun CartContent(
     decreaseItemCount: (Long) -> Unit,
     inspiredByCart: SnackCollection,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val snackCountFormattedString = rememberQuantityString(
-        MppR.plurals.cart_order_count, orderLines.size, orderLines.size
+        MppR.plurals.cart_order_count,
+        orderLines.size,
+        orderLines.size,
     )
     LazyColumn(modifier) {
         item {
@@ -135,7 +135,7 @@ private fun CartContent(
                 modifier = Modifier
                     .heightIn(min = 56.dp)
                     .padding(horizontal = 24.dp, vertical = 4.dp)
-                    .wrapContentHeight()
+                    .wrapContentHeight(),
             )
         }
         items(orderLines) { orderLine ->
@@ -154,16 +154,16 @@ private fun CartContent(
                             .fillMaxHeight()
                             .background(backgroundColor),
                         horizontalAlignment = Alignment.End,
-                        verticalArrangement = Arrangement.Center
+                        verticalArrangement = Arrangement.Center,
                     ) {
                         // Set 4.dp padding only if offset is bigger than 160.dp
                         val padding: Dp by animateDpAsState(
-                            if (offsetX > -160.dp) 4.dp else 0.dp
+                            if (offsetX > -160.dp) 4.dp else 0.dp,
                         )
                         Box(
                             Modifier
                                 .width(offsetX * -1)
-                                .padding(padding)
+                                .padding(padding),
                         ) {
                             // Height equals to width removing padding
                             val height = (offsetX + 8.dp) * -1
@@ -173,17 +173,17 @@ private fun CartContent(
                                     .height(height)
                                     .align(Alignment.Center),
                                 shape = CircleShape,
-                                color = JetsnackTheme.colors.error
+                                color = JetsnackTheme.colors.error,
                             ) {
                                 Box(
                                     modifier = Modifier.fillMaxSize(),
-                                    contentAlignment = Alignment.Center
+                                    contentAlignment = Alignment.Center,
                                 ) {
                                     // Icon must be visible while in this width range
                                     if (offsetX < -40.dp && offsetX > -152.dp) {
                                         // Icon alpha decreases as it is about to disappear
                                         val iconAlpha: Float by animateFloatAsState(
-                                            if (offsetX < -120.dp) 0.5f else 1f
+                                            if (offsetX < -120.dp) 0.5f else 1f,
                                         )
 
                                         Icon(
@@ -198,7 +198,7 @@ private fun CartContent(
                                     /*Text opacity increases as the text is supposed to appear in
                                     the screen*/
                                     val textAlpha by animateFloatAsState(
-                                        if (offsetX > -144.dp) 0.5f else 1f
+                                        if (offsetX > -144.dp) 0.5f else 1f,
                                     )
                                     if (offsetX < -120.dp) {
                                         Text(
@@ -208,8 +208,8 @@ private fun CartContent(
                                             textAlign = TextAlign.Center,
                                             modifier = Modifier
                                                 .graphicsLayer(
-                                                    alpha = textAlpha
-                                                )
+                                                    alpha = textAlpha,
+                                                ),
                                         )
                                     }
                                 }
@@ -223,21 +223,21 @@ private fun CartContent(
                     removeSnack = removeSnack,
                     increaseItemCount = increaseItemCount,
                     decreaseItemCount = decreaseItemCount,
-                    onSnackClick = onSnackClick
+                    onSnackClick = onSnackClick,
                 )
             }
         }
         item {
             SummaryItem(
                 subtotal = orderLines.map { it.snack.price * it.count }.sum(),
-                shippingCosts = 369
+                shippingCosts = 369,
             )
         }
         item {
             SnackCollection(
                 snackCollection = inspiredByCart,
                 onSnackClick = onSnackClick,
-                highlight = false
+                highlight = false,
             )
             Spacer(Modifier.height(56.dp))
         }
@@ -248,7 +248,7 @@ private fun CartContent(
 fun SummaryItem(
     subtotal: Long,
     shippingCosts: Long,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier) {
         Text(
@@ -260,7 +260,7 @@ fun SummaryItem(
             modifier = Modifier
                 .padding(horizontal = 24.dp)
                 .heightIn(min = 56.dp)
-                .wrapContentHeight()
+                .wrapContentHeight(),
         )
         Row(modifier = Modifier.padding(horizontal = 24.dp)) {
             Text(
@@ -269,12 +269,12 @@ fun SummaryItem(
                 modifier = Modifier
                     .weight(1f)
                     .wrapContentWidth(Alignment.Start)
-                    .alignBy(LastBaseline)
+                    .alignBy(LastBaseline),
             )
             Text(
                 text = formatPrice(subtotal),
                 style = MaterialTheme.typography.body1,
-                modifier = Modifier.alignBy(LastBaseline)
+                modifier = Modifier.alignBy(LastBaseline),
             )
         }
         Row(modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)) {
@@ -284,12 +284,12 @@ fun SummaryItem(
                 modifier = Modifier
                     .weight(1f)
                     .wrapContentWidth(Alignment.Start)
-                    .alignBy(LastBaseline)
+                    .alignBy(LastBaseline),
             )
             Text(
                 text = formatPrice(shippingCosts),
                 style = MaterialTheme.typography.body1,
-                modifier = Modifier.alignBy(LastBaseline)
+                modifier = Modifier.alignBy(LastBaseline),
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
@@ -302,12 +302,12 @@ fun SummaryItem(
                     .weight(1f)
                     .padding(end = 16.dp)
                     .wrapContentWidth(Alignment.End)
-                    .alignBy(LastBaseline)
+                    .alignBy(LastBaseline),
             )
             Text(
                 text = formatPrice(subtotal + shippingCosts),
                 style = MaterialTheme.typography.subtitle1,
-                modifier = Modifier.alignBy(LastBaseline)
+                modifier = Modifier.alignBy(LastBaseline),
             )
         }
         JetsnackDivider()
@@ -318,8 +318,8 @@ fun SummaryItem(
 private fun CheckoutBar(modifier: Modifier = Modifier) {
     Column(
         modifier.background(
-            JetsnackTheme.colors.uiBackground.copy(alpha = AlphaNearOpaque)
-        )
+            JetsnackTheme.colors.uiBackground.copy(alpha = AlphaNearOpaque),
+        ),
     ) {
         JetsnackDivider()
         Row {
@@ -329,13 +329,13 @@ private fun CheckoutBar(modifier: Modifier = Modifier) {
                 shape = RectangleShape,
                 modifier = Modifier
                     .padding(horizontal = 12.dp, vertical = 8.dp)
-                    .weight(1f)
+                    .weight(1f),
             ) {
                 Text(
                     text = stringResource(id = MppR.string.cart_checkout),
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Left,
-                    maxLines = 1
+                    maxLines = 1,
                 )
             }
         }

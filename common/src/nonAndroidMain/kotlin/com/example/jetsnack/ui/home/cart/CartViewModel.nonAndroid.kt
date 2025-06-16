@@ -6,7 +6,7 @@ import androidx.compose.runtime.collectAsState
 import com.example.jetsnack.model.OrderLine
 import kotlinx.coroutines.flow.StateFlow
 
-actual abstract class JetSnackCartViewModel actual constructor()  {
+actual abstract class JetSnackCartViewModel actual constructor() {
 
     @Composable
     actual fun collectOrderLinesAsState(flow: StateFlow<List<OrderLine>>): State<List<OrderLine>> {

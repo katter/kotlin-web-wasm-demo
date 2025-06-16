@@ -12,11 +12,11 @@ expect fun stringResource(id: Int, part: String): String
 expect fun stringResource(id: Int, count: Int): String
 
 object MppR {
-    object string {}
+    object string
 
-    object drawable {}
+    object drawable
 
-    object plurals {}
+    object plurals
 }
 
 expect val MppR.plurals.cart_order_count: Int
@@ -28,7 +28,6 @@ expect val MppR.string.label_filters: Int
 expect val MppR.string.quantity: Int
 expect val MppR.string.label_decrease: Int
 expect val MppR.string.label_increase: Int
-
 
 // Snack detail
 expect val MppR.string.label_back: Int

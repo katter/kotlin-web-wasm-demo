@@ -23,7 +23,7 @@ data class SnackCollection(
     val id: Long,
     val name: String,
     val snacks: List<Snack>,
-    val type: CollectionType = CollectionType.Normal
+    val type: CollectionType = CollectionType.Normal,
 )
 
 enum class CollectionType { Normal, Highlight }
@@ -53,38 +53,38 @@ private val tastyTreats = SnackCollection(
     id = 1L,
     name = "Android's picks",
     type = CollectionType.Highlight,
-    snacks = snacks.subList(0, 13)
+    snacks = snacks.subList(0, 13),
 )
 
 private val popular = SnackCollection(
     id = 2L,
     name = "Popular on Jetsnack",
-    snacks = snacks.subList(14, 19)
+    snacks = snacks.subList(14, 19),
 )
 
 private val wfhFavs = tastyTreats.copy(
     id = 3L,
-    name = "WFH favourites"
+    name = "WFH favourites",
 )
 
 private val newlyAdded = popular.copy(
     id = 4L,
-    name = "Newly Added"
+    name = "Newly Added",
 )
 
 private val exclusive = tastyTreats.copy(
     id = 5L,
-    name = "Only on Jetsnack"
+    name = "Only on Jetsnack",
 )
 
 private val also = tastyTreats.copy(
     id = 6L,
-    name = "Customers also bought"
+    name = "Customers also bought",
 )
 
 private val inspiredByCart = tastyTreats.copy(
     id = 7L,
-    name = "Inspired by your cart"
+    name = "Inspired by your cart",
 )
 
 private val snackCollections = listOf(
@@ -92,22 +92,22 @@ private val snackCollections = listOf(
     popular,
     wfhFavs,
     newlyAdded,
-    exclusive
+    exclusive,
 )
 
 private val related = listOf(
     also,
-    popular
+    popular,
 )
 
 private val cart = listOf(
     OrderLine(snacks[4], 2),
     OrderLine(snacks[6], 3),
-    OrderLine(snacks[8], 1)
+    OrderLine(snacks[8], 1),
 )
 
 @Immutable
 data class OrderLine(
     val snack: Snack,
-    val count: Int
+    val count: Int,
 )

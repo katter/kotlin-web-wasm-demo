@@ -5,6 +5,6 @@ import java.text.NumberFormat
 
 actual fun formatPrice(price: Long): String {
     return NumberFormat.getCurrencyInstance().format(
-        BigDecimal(price).movePointLeft(2)
+        BigDecimal(price).movePointLeft(2),
     )
 }

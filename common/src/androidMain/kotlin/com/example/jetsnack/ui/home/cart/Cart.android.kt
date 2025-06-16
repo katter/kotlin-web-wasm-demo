@@ -34,7 +34,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetsnack.R
 import com.example.jetsnack.model.OrderLine
@@ -57,7 +56,7 @@ actual fun ActualCartItem(
     increaseItemCount: (Long) -> Unit,
     decreaseItemCount: (Long) -> Unit,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier
+    modifier: Modifier,
 ) {
     val snack = orderLine.snack
     ConstraintLayout(
@@ -65,7 +64,7 @@ actual fun ActualCartItem(
             .fillMaxWidth()
             .clickable { onSnackClick(snack.id) }
             .background(JetsnackTheme.colors.uiBackground)
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = 24.dp),
 
     ) {
         val (divider, image, name, tag, priceSpacer, price, remove, quantity) = createRefs()
@@ -79,7 +78,7 @@ actual fun ActualCartItem(
                     top.linkTo(parent.top, margin = 16.dp)
                     bottom.linkTo(parent.bottom, margin = 16.dp)
                     start.linkTo(parent.start)
-                }
+                },
         )
         Text(
             text = snack.name,
@@ -91,9 +90,9 @@ actual fun ActualCartItem(
                     startMargin = 16.dp,
                     end = remove.start,
                     endMargin = 16.dp,
-                    bias = 0f
+                    bias = 0f,
                 )
-            }
+            },
         )
         IconButton(
             onClick = { removeSnack(snack.id) },
@@ -102,12 +101,12 @@ actual fun ActualCartItem(
                     top.linkTo(parent.top)
                     end.linkTo(parent.end)
                 }
-                .padding(top = 12.dp)
+                .padding(top = 12.dp),
         ) {
             Icon(
                 imageVector = Icons.Filled.Close,
                 tint = JetsnackTheme.colors.iconSecondary,
-                contentDescription = stringResource(R.string.label_remove)
+                contentDescription = stringResource(R.string.label_remove),
             )
         }
         Text(
@@ -120,16 +119,16 @@ actual fun ActualCartItem(
                     startMargin = 16.dp,
                     end = parent.end,
                     endMargin = 16.dp,
-                    bias = 0f
+                    bias = 0f,
                 )
-            }
+            },
         )
         Spacer(
             Modifier
                 .height(8.dp)
                 .constrainAs(priceSpacer) {
                     linkTo(top = tag.bottom, bottom = price.top)
-                }
+                },
         )
         Text(
             text = formatPrice(snack.price),
@@ -141,9 +140,9 @@ actual fun ActualCartItem(
                     end = quantity.start,
                     startMargin = 16.dp,
                     endMargin = 16.dp,
-                    bias = 0f
+                    bias = 0f,
                 )
-            }
+            },
         )
         QuantitySelector(
             count = orderLine.count,
@@ -152,13 +151,13 @@ actual fun ActualCartItem(
             modifier = Modifier.constrainAs(quantity) {
                 baseline.linkTo(price.baseline)
                 end.linkTo(parent.end)
-            }
+            },
         )
         JetsnackDivider(
             Modifier.constrainAs(divider) {
                 linkTo(start = parent.start, end = parent.end)
                 top.linkTo(parent.bottom)
-            }
+            },
         )
     }
 }
@@ -172,7 +171,7 @@ private fun CartPreview() {
             increaseItemCount = {},
             decreaseItemCount = {},
             inspiredByCart = SnackRepo.getInspiredByCart(),
-            onSnackClick = {}
+            onSnackClick = {},
         )
     }
 }
