@@ -38,20 +38,20 @@ object SearchRepo {
 data class SearchCategoryCollection(
     val id: Long,
     val name: String,
-    val categories: List<SearchCategory>
+    val categories: List<SearchCategory>,
 )
 
 @Immutable
 data class SearchCategory(
     val name: String,
-    val imageUrl: String
+    val imageUrl: String,
 )
 
 @Immutable
 data class SearchSuggestionGroup(
     val id: Long,
     val name: String,
-    val suggestions: List<String>
+    val suggestions: List<String>,
 )
 
 /**
@@ -65,21 +65,21 @@ private val searchCategoryCollections = listOf(
         categories = listOf(
             SearchCategory(
                 name = "Chips & crackers",
-                imageUrl = "https://source.unsplash.com/UsSdMZ78Q3E"
+                imageUrl = "https://source.unsplash.com/UsSdMZ78Q3E",
             ),
             SearchCategory(
                 name = "Fruit snacks",
-                imageUrl = "https://source.unsplash.com/SfP1PtM9Qa8"
+                imageUrl = "https://source.unsplash.com/SfP1PtM9Qa8",
             ),
             SearchCategory(
                 name = "Desserts",
-                imageUrl = "https://source.unsplash.com/_jk8KIyN_uA"
+                imageUrl = "https://source.unsplash.com/_jk8KIyN_uA",
             ),
             SearchCategory(
                 name = "Nuts ",
-                imageUrl = "https://source.unsplash.com/UsSdMZ78Q3E"
-            )
-        )
+                imageUrl = "https://source.unsplash.com/UsSdMZ78Q3E",
+            ),
+        ),
     ),
     SearchCategoryCollection(
         id = 1L,
@@ -87,30 +87,30 @@ private val searchCategoryCollections = listOf(
         categories = listOf(
             SearchCategory(
                 name = "Organic",
-                imageUrl = "https://source.unsplash.com/7meCnGCJ5Ms"
+                imageUrl = "https://source.unsplash.com/7meCnGCJ5Ms",
             ),
             SearchCategory(
                 name = "Gluten Free",
-                imageUrl = "https://source.unsplash.com/m741tj4Cz7M"
+                imageUrl = "https://source.unsplash.com/m741tj4Cz7M",
             ),
             SearchCategory(
                 name = "Paleo",
-                imageUrl = "https://source.unsplash.com/dt5-8tThZKg"
+                imageUrl = "https://source.unsplash.com/dt5-8tThZKg",
             ),
             SearchCategory(
                 name = "Vegan",
-                imageUrl = "https://source.unsplash.com/ReXxkS1m1H0"
+                imageUrl = "https://source.unsplash.com/ReXxkS1m1H0",
             ),
             SearchCategory(
                 name = "Vegitarian",
-                imageUrl = "https://source.unsplash.com/IGfIGP5ONV0"
+                imageUrl = "https://source.unsplash.com/IGfIGP5ONV0",
             ),
             SearchCategory(
                 name = "Whole30",
-                imageUrl = "https://source.unsplash.com/9MzCd76xLGk"
-            )
-        )
-    )
+                imageUrl = "https://source.unsplash.com/9MzCd76xLGk",
+            ),
+        ),
+    ),
 )
 
 private val searchSuggestions = listOf(
@@ -119,8 +119,8 @@ private val searchSuggestions = listOf(
         name = "Recent searches",
         suggestions = listOf(
             "Cheese",
-            "Apple Sauce"
-        )
+            "Apple Sauce",
+        ),
     ),
     SearchSuggestionGroup(
         id = 1L,
@@ -131,7 +131,7 @@ private val searchSuggestions = listOf(
             "Paleo",
             "Vegan",
             "Vegitarian",
-            "Whole30"
-        )
-    )
+            "Whole30",
+        ),
+    ),
 )

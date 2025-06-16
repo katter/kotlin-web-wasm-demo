@@ -3,10 +3,8 @@
 package com.example.jetsnack
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 import org.jetbrains.skiko.currentNanoTime
-
 
 val strsLocal = compositionLocalOf { emptyMap<Int, String>() } // intId to String
 val pluralsLocal = compositionLocalOf { emptyMap<Int, PluralResource>() }
@@ -42,7 +40,6 @@ actual val MppR.string.label_decrease: Int get() = _label_decrease
 private val _label_increase = lastId++
 actual val MppR.string.label_increase: Int get() = _label_increase
 
-
 // Snack detail
 private val _label_back = lastId++
 actual val MppR.string.label_back: Int get() = _label_back
@@ -71,7 +68,6 @@ actual val MppR.string.add_to_cart: Int get() = _add_to_cart
 // Home
 private val _label_select_delivery = lastId++
 actual val MppR.string.label_select_delivery: Int get() = _label_select_delivery
-
 
 // Filter
 private val _max_calories = lastId++
@@ -119,7 +115,6 @@ actual val MppR.string.home_cart: Int get() = _home_cart
 private val _home_profile = lastId++
 actual val MppR.string.home_profile: Int get() = _home_profile
 
-
 // Search
 private val _search_no_matches = lastId++
 actual val MppR.string.search_no_matches: Int get() = _search_no_matches
@@ -144,7 +139,6 @@ actual val MppR.string.cart_increase_error: Int get() = _cart_increase_error
 
 private val _cart_decrease_error = lastId++
 actual val MppR.string.cart_decrease_error: Int get() = _cart_decrease_error
-
 
 // Cart
 

@@ -21,7 +21,6 @@ import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,7 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
-//import com.google.accompanist.systemuicontroller.rememberSystemUiController
+// import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val LightColorPalette = JetsnackColors(
     brand = Shadow5,
@@ -53,7 +52,7 @@ private val LightColorPalette = JetsnackColors(
     gradient2_2 = listOf(Ocean3, Shadow3),
     gradient2_3 = listOf(Lavender3, Rose2),
     tornado1 = listOf(Shadow4, Ocean3),
-    isDark = false
+    isDark = false,
 )
 
 private val DarkColorPalette = JetsnackColors(
@@ -80,13 +79,13 @@ private val DarkColorPalette = JetsnackColors(
     gradient2_2 = listOf(Ocean4, Shadow2),
     gradient2_3 = listOf(Lavender3, Rose3),
     tornado1 = listOf(Shadow4, Ocean3),
-    isDark = true
+    isDark = true,
 )
 
 @Composable
 fun JetsnackTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colors = if (darkTheme) DarkColorPalette else LightColorPalette
 
@@ -103,7 +102,7 @@ fun JetsnackTheme(
             colors = debugColors(darkTheme),
             typography = Typography,
             shapes = Shapes,
-            content = content
+            content = content,
         )
     }
 }
@@ -146,7 +145,7 @@ class JetsnackColors(
     iconInteractiveInactive: Color,
     error: Color,
     notificationBadge: Color = error,
-    isDark: Boolean
+    isDark: Boolean,
 ) {
     var gradient6_1 by mutableStateOf(gradient6_1)
         private set
@@ -271,7 +270,7 @@ class JetsnackColors(
 @Composable
 fun ProvideJetsnackColors(
     colors: JetsnackColors,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorPalette = remember {
         // Explicitly creating a new object here so we don't mutate the initial [colors]
@@ -292,7 +291,7 @@ private val LocalJetsnackColors = staticCompositionLocalOf<JetsnackColors> {
  */
 fun debugColors(
     darkTheme: Boolean,
-    debugColor: Color = Color.Magenta
+    debugColor: Color = Color.Magenta,
 ) = Colors(
     primary = debugColor,
     primaryVariant = debugColor,
@@ -306,5 +305,5 @@ fun debugColors(
     onBackground = debugColor,
     onSurface = debugColor,
     onError = debugColor,
-    isLight = !darkTheme
+    isLight = !darkTheme,
 )

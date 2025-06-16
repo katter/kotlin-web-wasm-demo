@@ -1,4 +1,3 @@
-import com.example.jetsnack.ui.components.prepareImagesCache
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.runtime.*
@@ -9,6 +8,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.platform.Font
 import androidx.compose.ui.window.CanvasBasedWindow
 import com.example.jetsnack.JetSnackAppEntryPoint
+import com.example.jetsnack.ui.components.prepareImagesCache
 import com.example.jetsnack.ui.theme.Karla
 import com.example.jetsnack.ui.theme.Montserrat
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -40,7 +40,6 @@ fun main() {
     }
 }
 
-
 private suspend fun loadMontserratFont() {
     val regular = loadResource("montserrat_regular.ttf")
     val medium = loadResource("montserrat_medium.ttf")
@@ -64,7 +63,6 @@ private suspend fun loadKarlaFont() {
         Font(identity = "KarlaBold", data = bold, weight = FontWeight.Bold),
     )
 }
-
 
 @OptIn(ExperimentalResourceApi::class)
 internal suspend fun loadResource(resourcePath: String): ByteArray {

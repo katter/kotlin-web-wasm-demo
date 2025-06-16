@@ -21,7 +21,6 @@ actual class MppJetsnackAppState(
     actual val currentRoute: String?
         get() = navigationStack.lastWithIndex().value
 
-
     @Composable
     actual fun shouldShowBottomBar(): Boolean {
         return currentRoute?.startsWith(MainDestinations.SNACK_DETAIL_ROUTE) != true

@@ -31,11 +31,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 
-@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class)
-@Composable
 /**
  * Holds the Swipe to dismiss composable, its animation and the current state
  */
+@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterialApi::class)
+@Composable
 fun SwipeDismissItem(
     modifier: Modifier = Modifier,
     directions: Set<DismissDirection> = setOf(DismissDirection.EndToStart),
@@ -55,14 +55,14 @@ fun SwipeDismissItem(
         modifier = modifier,
         visible = !isDismissed,
         enter = enter,
-        exit = exit
+        exit = exit,
     ) {
         SwipeToDismiss(
             modifier = modifier,
             state = dismissState,
             directions = directions,
             background = { background(offset) },
-            dismissContent = { content(isDismissed) }
+            dismissContent = { content(isDismissed) },
         )
     }
 }

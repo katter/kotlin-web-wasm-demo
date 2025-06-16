@@ -16,7 +16,7 @@
 
 package com.example.jetsnack.ui.home
 
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -42,30 +42,30 @@ fun Profile(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxSize()
             .wrapContentSize()
-            .padding(24.dp)
+            .padding(24.dp),
     ) {
         Image(
             painterResource(MppR.drawable.empty_state_search),
-            contentDescription = null
+            contentDescription = null,
         )
         Spacer(Modifier.height(24.dp))
         Text(
             text = stringResource(MppR.string.work_in_progress),
             style = MaterialTheme.typography.subtitle1,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
         Spacer(Modifier.height(16.dp))
         Text(
             text = stringResource(MppR.string.grab_beverage),
             style = MaterialTheme.typography.body2,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
     }
 }
 
-//@Preview
+// @Preview
 @Composable
 fun ProfilePreview() {
     JetsnackTheme {

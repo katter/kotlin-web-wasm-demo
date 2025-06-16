@@ -40,7 +40,7 @@ fun JetsnackSnackbar(
     backgroundColor: Color = JetsnackTheme.colors.uiBackground,
     contentColor: Color = JetsnackTheme.colors.textSecondary,
     actionColor: Color = JetsnackTheme.colors.brand,
-    elevation: Dp = 6.dp
+    elevation: Dp = 6.dp,
 ) {
     Snackbar(
         snackbarData = snackbarData,
@@ -50,6 +50,6 @@ fun JetsnackSnackbar(
         backgroundColor = backgroundColor,
         contentColor = contentColor,
         actionColor = actionColor,
-        elevation = elevation
+        elevation = elevation,
     )
 }

@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
             Font(R.font.montserrat_light, FontWeight.Light),
             Font(R.font.montserrat_regular, FontWeight.Normal),
             Font(R.font.montserrat_medium, FontWeight.Medium),
-            Font(R.font.montserrat_semibold, FontWeight.SemiBold)
+            Font(R.font.montserrat_semibold, FontWeight.SemiBold),
         )
         Karla = FontFamily(
             Font(R.font.karla_regular, FontWeight.Normal),
-            Font(R.font.karla_bold, FontWeight.Bold)
+            Font(R.font.karla_bold, FontWeight.Bold),
         )
 
         setContent {

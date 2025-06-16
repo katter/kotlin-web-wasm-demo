@@ -1,17 +1,11 @@
 package com.example.jetsnack.ui
 
 import androidx.compose.animation.*
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.consumedWindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.snapshots.Snapshot
 import androidx.compose.ui.Modifier
-import com.example.jetsnack.ui.home.CartTodo
 import com.example.jetsnack.ui.home.Feed
 import com.example.jetsnack.ui.home.HomeSections
 import com.example.jetsnack.ui.home.Profile
@@ -23,28 +17,27 @@ import com.example.jetsnack.ui.snackdetail.SnackDetail
 @Composable
 actual fun JetsnackScaffoldContent(
     innerPaddingModifier: PaddingValues,
-    appState: MppJetsnackAppState
+    appState: MppJetsnackAppState,
 ) {
-
     when (appState.currentRoute) {
         HomeSections.FEED.route -> {
             Feed(
                 onSnackClick = appState::navigateToSnackDetail,
-                modifier = Modifier.padding(innerPaddingModifier)
+                modifier = Modifier.padding(innerPaddingModifier),
             )
         }
 
         HomeSections.SEARCH.route -> {
             Search(
                 onSnackClick = appState::navigateToSnackDetail,
-                modifier = Modifier.padding(innerPaddingModifier)
+                modifier = Modifier.padding(innerPaddingModifier),
             )
         }
 
         HomeSections.CART.route -> {
             Cart(
                 onSnackClick = appState::navigateToSnackDetail,
-                modifier = Modifier.padding(innerPaddingModifier)
+                modifier = Modifier.padding(innerPaddingModifier),
             )
         }
 
@@ -77,7 +70,7 @@ class NavigationStack<T>(initial: T) {
     }
 
     fun back() {
-        if(stack.size > 1) {
+        if (stack.size > 1) {
             // Always keep one element on the view stack
             stack.removeLast()
         }

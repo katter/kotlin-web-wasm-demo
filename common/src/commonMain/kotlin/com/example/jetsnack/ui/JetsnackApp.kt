@@ -36,7 +36,7 @@ fun JetsnackApp() {
                     JetsnackBottomBar(
                         tabs = appState.bottomBarTabs,
                         currentRoute = appState.currentRoute!!,
-                        navigateToRoute = appState::navigateToBottomBarRoute
+                        navigateToRoute = appState::navigateToBottomBarRoute,
                     )
                 }
             },
@@ -44,10 +44,10 @@ fun JetsnackApp() {
                 SnackbarHost(
                     hostState = it,
                     modifier = Modifier.jetSnackSystemBarsPadding(),
-                    snackbar = { snackbarData -> JetsnackSnackbar(snackbarData) }
+                    snackbar = { snackbarData -> JetsnackSnackbar(snackbarData) },
                 )
             },
-            scaffoldState = appState.scaffoldState
+            scaffoldState = appState.scaffoldState,
         ) { innerPaddingModifier ->
             JetsnackScaffoldContent(innerPaddingModifier, appState)
         }
@@ -56,4 +56,3 @@ fun JetsnackApp() {
 
 @Composable
 expect fun JetsnackScaffoldContent(innerPaddingModifier: PaddingValues, appState: MppJetsnackAppState)
-

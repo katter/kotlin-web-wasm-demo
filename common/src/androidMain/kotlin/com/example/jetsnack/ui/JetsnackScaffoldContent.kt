@@ -21,16 +21,16 @@ import com.example.jetsnack.ui.snackdetail.SnackDetail
 @Composable
 actual fun JetsnackScaffoldContent(
     innerPaddingModifier: PaddingValues,
-    appState: MppJetsnackAppState
+    appState: MppJetsnackAppState,
 ) {
     NavHost(
         navController = appState.navController,
         startDestination = MainDestinations.HOME_ROUTE,
-        modifier = Modifier.padding(innerPaddingModifier)
+        modifier = Modifier.padding(innerPaddingModifier),
     ) {
         jetsnackNavGraph(
             onSnackSelected = appState::navigateToSnackDetail,
-            upPress = appState::upPress
+            upPress = appState::upPress,
         )
     }
 }
@@ -41,13 +41,13 @@ private fun NavGraphBuilder.jetsnackNavGraph(
 ) {
     navigation(
         route = MainDestinations.HOME_ROUTE,
-        startDestination = HomeSections.FEED.route
+        startDestination = HomeSections.FEED.route,
     ) {
         addHomeGraph(onSnackSelected)
     }
     composable(
         "${MainDestinations.SNACK_DETAIL_ROUTE}/{${MainDestinations.SNACK_ID_KEY}}",
-        arguments = listOf(navArgument(MainDestinations.SNACK_ID_KEY) { type = NavType.LongType })
+        arguments = listOf(navArgument(MainDestinations.SNACK_ID_KEY) { type = NavType.LongType }),
     ) { backStackEntry ->
         val arguments = requireNotNull(backStackEntry.arguments)
         val snackId = arguments.getLong(MainDestinations.SNACK_ID_KEY)
@@ -57,7 +57,7 @@ private fun NavGraphBuilder.jetsnackNavGraph(
 
 fun NavGraphBuilder.addHomeGraph(
     onSnackSelected: (Long, NavBackStackEntry) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     composable(HomeSections.FEED.route) { from ->
         Feed(onSnackClick = { id -> onSnackSelected(id, from) }, modifier)

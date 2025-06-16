@@ -14,14 +14,12 @@ import kotlinx.coroutines.withContext
 import java.net.URL
 import javax.imageio.ImageIO
 
-
 private val imagesCache = mutableMapOf<String, ImageBitmap>()
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 actual fun SnackAsyncImage(imageUrl: String, contentDescription: String?, modifier: Modifier) {
     var img: ImageBitmap? by remember(imageUrl) { mutableStateOf(null) }
-
 
     AnimatedContent(img, transitionSpec = {
         fadeIn(TweenSpec()) with fadeOut(TweenSpec())

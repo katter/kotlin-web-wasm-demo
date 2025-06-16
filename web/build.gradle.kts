@@ -16,7 +16,7 @@ kotlin {
             commonWebpackConfig {
                 outputFileName = "jetsnackwasmapp.js"
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    // Uncomment and configure this if you want to open a browser different from the system default 
+                    // Uncomment and configure this if you want to open a browser different from the system default
                     // open = mapOf(
                     //     "app" to mapOf(
                     //         "name" to "google chrome"

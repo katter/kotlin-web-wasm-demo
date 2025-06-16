@@ -17,7 +17,7 @@
 package com.example.jetsnack.ui.home
 
 import androidx.compose.animation.ExperimentalAnimationApi
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -60,7 +60,7 @@ import com.example.jetsnack.ui.theme.JetsnackTheme
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun FilterScreen(
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
 ) {
     var sortState by remember { mutableStateOf(SnackRepo.getSortDefault()) }
     var maxCalories by remember { mutableStateOf(0f) }
@@ -77,7 +77,7 @@ fun FilterScreen(
                         IconButton(onClick = onDismiss) {
                             Icon(
                                 imageVector = Icons.Filled.Close,
-                                contentDescription = stringResource(id = MppR.string.close)
+                                contentDescription = stringResource(id = MppR.string.close),
                             )
                         }
                     },
@@ -86,14 +86,14 @@ fun FilterScreen(
                             text = stringResource(id = MppR.string.label_filters),
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
-                            style = MaterialTheme.typography.h6
+                            style = MaterialTheme.typography.h6,
                         )
                     },
                     actions = {
                         var resetEnabled = sortState != defaultFilter
                         IconButton(
                             onClick = { /* TODO: Open search */ },
-                            enabled = resetEnabled
+                            enabled = resetEnabled,
                         ) {
                             val alpha = if (resetEnabled) {
                                 ContentAlpha.high
@@ -103,14 +103,14 @@ fun FilterScreen(
                             CompositionLocalProvider(LocalContentAlpha provides alpha) {
                                 Text(
                                     text = stringResource(id = MppR.string.reset),
-                                    style = MaterialTheme.typography.body2
+                                    style = MaterialTheme.typography.body2,
                                 )
                             }
                         }
                     },
-                    backgroundColor = JetsnackTheme.colors.uiBackground
+                    backgroundColor = JetsnackTheme.colors.uiBackground,
                 )
-            }
+            },
         ) {
             Column(
                 Modifier
@@ -122,26 +122,26 @@ fun FilterScreen(
                     sortState = sortState,
                     onFilterChange = { filter ->
                         sortState = filter.name
-                    }
+                    },
                 )
                 FilterChipSection(
                     title = stringResource(id = MppR.string.price),
-                    filters = priceFilters
+                    filters = priceFilters,
                 )
                 FilterChipSection(
                     title = stringResource(id = MppR.string.category),
-                    filters = categoryFilters
+                    filters = categoryFilters,
                 )
 
                 MaxCalories(
                     sliderPosition = maxCalories,
                     onValueChanged = { newValue ->
                         maxCalories = newValue
-                    }
+                    },
                 )
                 FilterChipSection(
                     title = stringResource(id = MppR.string.lifestyle),
-                    filters = lifeStyleFilters
+                    filters = lifeStyleFilters,
                 )
             }
         }
@@ -151,7 +151,6 @@ fun FilterScreen(
 @Composable
 expect fun SnackDialog(onCloseRequest: () -> Unit, content: @Composable () -> Unit)
 
-
 @Composable
 fun FilterChipSection(title: String, filters: List<Filter>) {
     FilterTitle(text = title)
@@ -160,12 +159,12 @@ fun FilterChipSection(title: String, filters: List<Filter>) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 12.dp, bottom = 16.dp)
-            .padding(horizontal = 4.dp)
+            .padding(horizontal = 4.dp),
     ) {
         filters.forEach { filter ->
             FilterChip(
                 filter = filter,
-                modifier = Modifier.padding(end = 4.dp, bottom = 8.dp)
+                modifier = Modifier.padding(end = 4.dp, bottom = 8.dp),
             )
         }
     }
@@ -177,7 +176,7 @@ fun SortFiltersSection(sortState: String, onFilterChange: (Filter) -> Unit) {
     Column(Modifier.padding(bottom = 24.dp)) {
         SortFilters(
             sortState = sortState,
-            onChanged = onFilterChange
+            onChanged = onFilterChange,
         )
     }
 }
@@ -186,9 +185,8 @@ fun SortFiltersSection(sortState: String, onFilterChange: (Filter) -> Unit) {
 fun SortFilters(
     sortFilters: List<Filter> = SnackRepo.getSortFilters(),
     sortState: String,
-    onChanged: (Filter) -> Unit
+    onChanged: (Filter) -> Unit,
 ) {
-
     sortFilters.forEach { filter ->
         SortOption(
             text = filter.name,
@@ -196,7 +194,7 @@ fun SortFilters(
             selected = sortState == filter.name,
             onClickOption = {
                 onChanged(filter)
-            }
+            },
         )
     }
 }
@@ -209,7 +207,7 @@ fun MaxCalories(sliderPosition: Float, onValueChanged: (Float) -> Unit) {
             text = stringResource(id = MppR.string.per_serving),
             style = MaterialTheme.typography.body2,
             color = JetsnackTheme.colors.brand,
-            modifier = Modifier.padding(top = 5.dp, start = 10.dp)
+            modifier = Modifier.padding(top = 5.dp, start = 10.dp),
         )
     }
     Slider(
@@ -223,8 +221,8 @@ fun MaxCalories(sliderPosition: Float, onValueChanged: (Float) -> Unit) {
             .fillMaxWidth(),
         colors = SliderDefaults.colors(
             thumbColor = JetsnackTheme.colors.brand,
-            activeTrackColor = JetsnackTheme.colors.brand
-        )
+            activeTrackColor = JetsnackTheme.colors.brand,
+        ),
     )
 }
 
@@ -234,20 +232,21 @@ fun FilterTitle(text: String) {
         text = text,
         style = MaterialTheme.typography.h6,
         color = JetsnackTheme.colors.brand,
-        modifier = Modifier.padding(bottom = 8.dp)
+        modifier = Modifier.padding(bottom = 8.dp),
     )
 }
+
 @Composable
 fun SortOption(
     text: String,
     icon: ImageVector?,
     onClickOption: () -> Unit,
-    selected: Boolean
+    selected: Boolean,
 ) {
     Row(
         modifier = Modifier
             .padding(top = 14.dp)
-            .selectable(selected) { onClickOption() }
+            .selectable(selected) { onClickOption() },
     ) {
         if (icon != null) {
             Icon(imageVector = icon, contentDescription = null)
@@ -257,18 +256,19 @@ fun SortOption(
             style = MaterialTheme.typography.subtitle1,
             modifier = Modifier
                 .padding(start = 10.dp)
-                .weight(1f)
+                .weight(1f),
         )
         if (selected) {
             Icon(
                 imageVector = Icons.Filled.Done,
                 contentDescription = null,
-                tint = JetsnackTheme.colors.brand
+                tint = JetsnackTheme.colors.brand,
             )
         }
     }
 }
-//@Preview
+
+// @Preview
 @Composable
 fun FilterScreenPreview() {
     FilterScreen(onDismiss = {})

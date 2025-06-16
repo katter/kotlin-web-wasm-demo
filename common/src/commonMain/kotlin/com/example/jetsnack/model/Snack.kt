@@ -25,7 +25,7 @@ data class Snack(
     val imageUrl: String,
     val price: Long,
     val tagline: String = "",
-    val tags: Set<String> = emptySet()
+    val tags: Set<String> = emptySet(),
 )
 
 /**
@@ -38,189 +38,189 @@ val snacks = listOf(
         name = "Cupcake",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/pGM4sjt_BdQ",
-        price = 299
+        price = 299,
     ),
     Snack(
         id = 2L,
         name = "Donut",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/Yc5sL-ejk6U",
-        price = 290
+        price = 290,
     ),
     Snack(
         id = 3L,
         name = "Eclair",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/-LojFX9NfPY",
-        price = 289
+        price = 289,
     ),
     Snack(
         id = 4L,
         name = "Froyo",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/3U2V5WqK1PQ",
-        price = 288
+        price = 288,
     ),
     Snack(
         id = 5L,
         name = "Gingerbread",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/Y4YR9OjdIMk",
-        price = 499
+        price = 499,
     ),
     Snack(
         id = 6L,
         name = "Honeycomb",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/bELvIg_KZGU",
-        price = 309
+        price = 309,
     ),
     Snack(
         id = 7L,
         name = "Ice Cream Sandwich",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/YgYJsFDd4AU",
-        price = 1299
+        price = 1299,
     ),
     Snack(
         id = 8L,
         name = "Jellybean",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/0u_vbeOkMpk",
-        price = 109
+        price = 109,
     ),
     Snack(
         id = 9L,
         name = "KitKat",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/yb16pT5F_jE",
-        price = 549
+        price = 549,
     ),
     Snack(
         id = 10L,
         name = "Lollipop",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/AHF_ZktTL6Q",
-        price = 209
+        price = 209,
     ),
     Snack(
         id = 11L,
         name = "Marshmallow",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/rqFm0IgMVYY",
-        price = 219
+        price = 219,
     ),
     Snack(
         id = 12L,
         name = "Nougat",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/qRE_OpbVPR8",
-        price = 309
+        price = 309,
     ),
     Snack(
         id = 13L,
         name = "Oreo",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/33fWPnyN6tU",
-        price = 339
+        price = 339,
     ),
     Snack(
         id = 14L,
         name = "Pie",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/aX_ljOOyWJY",
-        price = 249
+        price = 249,
     ),
     Snack(
         id = 15L,
         name = "Chips",
         imageUrl = "https://source.unsplash.com/UsSdMZ78Q3E",
-        price = 277
+        price = 277,
     ),
     Snack(
         id = 16L,
         name = "Pretzels",
         imageUrl = "https://source.unsplash.com/7meCnGCJ5Ms",
-        price = 154
+        price = 154,
     ),
     Snack(
         id = 17L,
         name = "Smoothies",
         imageUrl = "https://source.unsplash.com/m741tj4Cz7M",
-        price = 257
+        price = 257,
     ),
     Snack(
         id = 18L,
         name = "Popcorn",
         imageUrl = "https://source.unsplash.com/iuwMdNq0-s4",
-        price = 167
+        price = 167,
     ),
     Snack(
         id = 19L,
         name = "Almonds",
         imageUrl = "https://source.unsplash.com/qgWWQU1SzqM",
-        price = 123
+        price = 123,
     ),
     Snack(
         id = 20L,
         name = "Cheese",
         imageUrl = "https://source.unsplash.com/9MzCd76xLGk",
-        price = 231
+        price = 231,
     ),
     Snack(
         id = 21L,
         name = "Apples",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/1d9xXWMtQzQ",
-        price = 221
+        price = 221,
     ),
     Snack(
         id = 22L,
         name = "Apple sauce",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/wZxpOw84QTU",
-        price = 222
+        price = 222,
     ),
     Snack(
         id = 23L,
         name = "Apple chips",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/okzeRxm_GPo",
-        price = 231
+        price = 231,
     ),
     Snack(
         id = 24L,
         name = "Apple juice",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/l7imGdupuhU",
-        price = 241
+        price = 241,
     ),
     Snack(
         id = 25L,
         name = "Apple pie",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/bkXzABDt08Q",
-        price = 225
+        price = 225,
     ),
     Snack(
         id = 26L,
         name = "Grapes",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/y2MeW00BdBo",
-        price = 266
+        price = 266,
     ),
     Snack(
         id = 27L,
         name = "Kiwi",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/1oMGgHn-M8k",
-        price = 127
+        price = 127,
     ),
     Snack(
         id = 28L,
         name = "Mango",
         tagline = "A tag line",
         imageUrl = "https://source.unsplash.com/TIGDsyy0TK4",
-        price = 128
-    )
+        price = 128,
+    ),
 )

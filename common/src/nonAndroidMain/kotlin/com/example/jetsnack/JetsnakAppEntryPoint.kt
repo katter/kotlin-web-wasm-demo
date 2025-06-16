@@ -8,7 +8,7 @@ import com.example.jetsnack.ui.JetsnackApp
 fun JetSnackAppEntryPoint() {
     CompositionLocalProvider(
         strsLocal provides buildStingsResources(),
-        pluralsLocal provides buildPluralResources()
+        pluralsLocal provides buildPluralResources(),
     ) {
         JetsnackApp()
     }

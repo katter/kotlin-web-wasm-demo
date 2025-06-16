@@ -32,7 +32,7 @@ import kotlinx.coroutines.flow.StateFlow
  */
 class CartViewModel(
     private val snackbarManager: SnackbarManager,
-    snackRepository: SnackRepo
+    snackRepository: SnackRepo,
 ) : JetSnackCartViewModel() {
 
     private val _orderLines: MutableStateFlow<List<OrderLine>> =
@@ -88,5 +88,4 @@ expect abstract class JetSnackCartViewModel() {
 
     @Composable
     fun collectOrderLinesAsState(flow: StateFlow<List<OrderLine>>): State<List<OrderLine>>
-
 }

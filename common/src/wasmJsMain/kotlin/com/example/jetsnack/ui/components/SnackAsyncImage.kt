@@ -1,14 +1,13 @@
 package com.example.jetsnack.ui.components
 
-import androidx.compose.ui.Modifier
-import androidx.compose.runtime.*
 import androidx.compose.foundation.Image
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.toComposeImageBitmap
-import org.jetbrains.skia.Bitmap
 import androidx.compose.ui.layout.ContentScale
-import kotlinx.coroutines.*
 import com.example.jetsnack.model.snacks
+import kotlinx.coroutines.*
 
 val imagesCache = mutableMapOf<String, ImageBitmap>()
 
@@ -16,9 +15,8 @@ val imagesCache = mutableMapOf<String, ImageBitmap>()
 actual fun SnackAsyncImage(
     imageUrl: String,
     contentDescription: String?,
-    modifier: Modifier
+    modifier: Modifier,
 ) {
-
     var bitmap: ImageBitmap? by remember { mutableStateOf(null) }
 
     if (bitmap != null) {

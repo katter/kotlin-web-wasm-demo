@@ -24,7 +24,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -53,7 +53,7 @@ import com.example.jetsnack.ui.theme.JetsnackTheme
 @Composable
 fun Feed(
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val snackCollections = remember { SnackRepo.getSnacks() }
     val filters = remember { SnackRepo.getFilters() }
@@ -61,7 +61,7 @@ fun Feed(
         snackCollections,
         filters,
         onSnackClick,
-        modifier
+        modifier,
     )
 }
 
@@ -70,9 +70,8 @@ private fun Feed(
     snackCollections: List<SnackCollection>,
     filters: List<Filter>,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
-
     JetsnackSurface(modifier = modifier.fillMaxSize()) {
         Box {
             SnackCollectionList(snackCollections, filters, onSnackClick)
@@ -87,15 +86,14 @@ private fun SnackCollectionList(
     snackCollections: List<SnackCollection>,
     filters: List<Filter>,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     var filtersVisible by rememberSaveable { mutableStateOf(false) }
     Box(modifier) {
         LazyColumn {
-
             item {
                 Spacer(
-                    Modifier.windowInsetsTopHeight(snackCollectionListItemWindowInsets())
+                    Modifier.windowInsetsTopHeight(snackCollectionListItemWindowInsets()),
                 )
                 FilterBar(filters, onShowFilters = { filtersVisible = true })
             }
@@ -107,7 +105,7 @@ private fun SnackCollectionList(
                 SnackCollection(
                     snackCollection = snackCollection,
                     onSnackClick = onSnackClick,
-                    index = index
+                    index = index,
                 )
             }
         }
@@ -115,12 +113,12 @@ private fun SnackCollectionList(
     AnimatedVisibility(
         visible = filtersVisible,
         enter = slideInVertically() + expandVertically(
-            expandFrom = Alignment.Top
+            expandFrom = Alignment.Top,
         ) + fadeIn(initialAlpha = 0.3f),
-        exit = slideOutVertically() + shrinkVertically() + fadeOut()
+        exit = slideOutVertically() + shrinkVertically() + fadeOut(),
     ) {
         FilterScreen(
-            onDismiss = { filtersVisible = false }
+            onDismiss = { filtersVisible = false },
         )
     }
 }
@@ -128,7 +126,7 @@ private fun SnackCollectionList(
 @Composable
 expect fun snackCollectionListItemWindowInsets(): WindowInsets
 
-//@Preview
+// @Preview
 @Composable
 fun HomePreview() {
     JetsnackTheme {

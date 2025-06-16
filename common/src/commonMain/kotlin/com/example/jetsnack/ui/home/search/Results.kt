@@ -16,7 +16,7 @@
 
 package com.example.jetsnack.ui.home.search
 
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -46,7 +46,7 @@ import com.example.jetsnack.ui.theme.JetsnackTheme
 fun SearchResults(
     searchResults: List<Snack>,
     filters: List<Filter>,
-    onSnackClick: (Long) -> Unit
+    onSnackClick: (Long) -> Unit,
 ) {
     Column {
         FilterBar(filters, onShowFilters = {})
@@ -54,7 +54,7 @@ fun SearchResults(
             text = stringResource(MppR.string.search_count, searchResults.size),
             style = MaterialTheme.typography.h6,
             color = JetsnackTheme.colors.textPrimary,
-            modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp)
+            modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp),
         )
         LazyColumn {
             itemsIndexed(searchResults) { index, snack ->
@@ -69,7 +69,7 @@ private fun SearchResult(
     snack: Snack,
     onSnackClick: (Long) -> Unit,
     showDivider: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     // TODO: implement Search Result (we don't have ConstrainLayout in Compose MPP)
 //    ConstraintLayout(
@@ -174,37 +174,37 @@ private fun SearchResult(
 @Composable
 fun NoResults(
     query: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxSize()
             .wrapContentSize()
-            .padding(24.dp)
+            .padding(24.dp),
     ) {
         Image(
             painterResource(MppR.drawable.empty_state_search),
-            contentDescription = null
+            contentDescription = null,
         )
         Spacer(Modifier.height(24.dp))
         Text(
             text = stringResource(MppR.string.search_no_matches, query),
             style = MaterialTheme.typography.subtitle1,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
         Spacer(Modifier.height(16.dp))
         Text(
             text = stringResource(MppR.string.search_no_matches_retry),
             style = MaterialTheme.typography.body2,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
     }
 }
 
-//@Preview
+// @Preview
 @Composable
 private fun SearchResultPreview() {
     JetsnackTheme {
@@ -212,7 +212,7 @@ private fun SearchResultPreview() {
             SearchResult(
                 snack = snacks[0],
                 onSnackClick = { },
-                showDivider = false
+                showDivider = false,
             )
         }
     }

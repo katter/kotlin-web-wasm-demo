@@ -11,7 +11,7 @@ import kotlin.coroutines.suspendCoroutine
 import kotlin.wasm.unsafe.UnsafeWasmMemoryApi
 import kotlin.wasm.unsafe.withScopedMemoryAllocator
 
-private class MissingResourceException(url: String): Exception("GET $url failed")
+private class MissingResourceException(url: String) : Exception("GET $url failed")
 
 internal suspend fun loadImage(url: String): ArrayBuffer {
     return suspendCoroutine { continuation ->
@@ -42,7 +42,7 @@ internal fun ArrayBuffer.toByteArray(): ByteArray {
         const mem8 = new Int8Array(wasmExports.memory.buffer, dstAddr, size);
         mem8.set(src);
     }
-"""
+""",
 )
 internal external fun jsExportInt8ArrayToWasm(src: Int8Array, size: Int, dstAddr: Int)
 

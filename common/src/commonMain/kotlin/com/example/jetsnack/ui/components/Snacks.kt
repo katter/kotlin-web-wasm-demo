@@ -16,7 +16,7 @@
 
 package com.example.jetsnack.ui.components
 
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -74,14 +74,14 @@ fun SnackCollection(
     onSnackClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
     index: Int = 0,
-    highlight: Boolean = true
+    highlight: Boolean = true,
 ) {
     Column(modifier = modifier) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .heightIn(min = 56.dp)
-                .padding(start = 24.dp)
+                .padding(start = 24.dp),
         ) {
             Text(
                 text = snackCollection.name,
@@ -91,19 +91,19 @@ fun SnackCollection(
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .weight(1f)
-                    .wrapContentWidth(Alignment.Start)
+                    .wrapContentWidth(Alignment.Start),
             )
             IconButton(
                 onClick = { /* todo */ },
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier.align(Alignment.CenterVertically),
             ) {
                 Icon(
                     imageVector = mirroringIcon(
                         ltrIcon = Icons.Outlined.ArrowForward,
-                        rtlIcon = Icons.Outlined.ArrowBack
+                        rtlIcon = Icons.Outlined.ArrowBack,
                     ),
                     tint = JetsnackTheme.colors.brand,
-                    contentDescription = null
+                    contentDescription = null,
                 )
             }
         }
@@ -120,7 +120,7 @@ private fun HighlightedSnacks(
     index: Int,
     snacks: List<Snack>,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val scroll = rememberScrollState(0)
     val gradient = when ((index / 2) % 2) {
@@ -134,7 +134,7 @@ private fun HighlightedSnacks(
     LazyRow(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
-        contentPadding = PaddingValues(start = 24.dp, end = 24.dp)
+        contentPadding = PaddingValues(start = 24.dp, end = 24.dp),
     ) {
         itemsIndexed(snacks) { index, snack ->
             HighlightSnackItem(
@@ -143,7 +143,7 @@ private fun HighlightedSnacks(
                 index,
                 gradient,
                 gradientWidth,
-                scroll.value
+                scroll.value,
             )
         }
     }
@@ -153,11 +153,11 @@ private fun HighlightedSnacks(
 private fun Snacks(
     snacks: List<Snack>,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     LazyRow(
         modifier = modifier,
-        contentPadding = PaddingValues(start = 12.dp, end = 12.dp)
+        contentPadding = PaddingValues(start = 12.dp, end = 12.dp),
     ) {
         items(snacks) { snack ->
             SnackItem(snack, onSnackClick)
@@ -169,33 +169,33 @@ private fun Snacks(
 fun SnackItem(
     snack: Snack,
     onSnackClick: (Long) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     JetsnackSurface(
         shape = MaterialTheme.shapes.medium,
         modifier = modifier.padding(
             start = 4.dp,
             end = 4.dp,
-            bottom = 8.dp
-        )
+            bottom = 8.dp,
+        ),
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .clickable(onClick = { onSnackClick(snack.id) })
-                .padding(8.dp)
+                .padding(8.dp),
         ) {
             SnackImage(
                 imageUrl = snack.imageUrl,
                 elevation = 4.dp,
                 contentDescription = null,
-                modifier = Modifier.size(120.dp)
+                modifier = Modifier.size(120.dp),
             )
             Text(
                 text = snack.name,
                 style = MaterialTheme.typography.subtitle1,
                 color = JetsnackTheme.colors.textSecondary,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(top = 8.dp),
             )
         }
     }
@@ -209,7 +209,7 @@ private fun HighlightSnackItem(
     gradient: List<Color>,
     gradientWidth: Float,
     scroll: Int,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val left = index * with(LocalDensity.current) {
         (HighlightCardWidth + HighlightCardPadding).toPx()
@@ -218,33 +218,33 @@ private fun HighlightSnackItem(
         modifier = modifier
             .size(
                 width = 170.dp,
-                height = 250.dp
+                height = 250.dp,
             )
-            .padding(bottom = 16.dp)
+            .padding(bottom = 16.dp),
     ) {
         Column(
             modifier = Modifier
                 .clickable(onClick = { onSnackClick(snack.id) })
-                .fillMaxSize()
+                .fillMaxSize(),
         ) {
             Box(
                 modifier = Modifier
                     .height(160.dp)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
             ) {
                 val gradientOffset = left - (scroll / 3f)
                 Box(
                     modifier = Modifier
                         .height(100.dp)
                         .fillMaxWidth()
-                        .offsetGradientBackground(gradient, gradientWidth, gradientOffset)
+                        .offsetGradientBackground(gradient, gradientWidth, gradientOffset),
                 )
                 SnackImage(
                     imageUrl = snack.imageUrl,
                     contentDescription = null,
                     modifier = Modifier
                         .size(120.dp)
-                        .align(Alignment.BottomCenter)
+                        .align(Alignment.BottomCenter),
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
@@ -254,14 +254,14 @@ private fun HighlightSnackItem(
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.h6,
                 color = JetsnackTheme.colors.textSecondary,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier.padding(horizontal = 16.dp),
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = snack.tagline,
                 style = MaterialTheme.typography.body1,
                 color = JetsnackTheme.colors.textHelp,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier.padding(horizontal = 16.dp),
             )
         }
     }
@@ -272,13 +272,13 @@ fun SnackImage(
     imageUrl: String,
     contentDescription: String?,
     modifier: Modifier = Modifier,
-    elevation: Dp = 0.dp
+    elevation: Dp = 0.dp,
 ) {
     JetsnackSurface(
         color = Color.LightGray,
         elevation = elevation,
         shape = CircleShape,
-        modifier = modifier
+        modifier = modifier,
     ) {
         SnackAsyncImage(imageUrl, contentDescription, Modifier.fillMaxSize())
     }
@@ -288,10 +288,10 @@ fun SnackImage(
 expect fun SnackAsyncImage(
     imageUrl: String,
     contentDescription: String?,
-    modifier: Modifier
+    modifier: Modifier,
 )
 
-//@Preview
+// @Preview
 @Composable
 fun SnackCardPreview() {
     JetsnackTheme {
@@ -302,7 +302,7 @@ fun SnackCardPreview() {
             index = 0,
             gradient = JetsnackTheme.colors.gradient6_1,
             gradientWidth = gradientWidth,
-            scroll = 0
+            scroll = 0,
         )
     }
 }

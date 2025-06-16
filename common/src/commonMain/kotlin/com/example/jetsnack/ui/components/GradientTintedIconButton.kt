@@ -16,7 +16,7 @@
 
 package com.example.jetsnack.ui.components
 
-//import androidx.compose.desktop.ui.tooling.preview.Preview
+// import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -44,7 +44,7 @@ fun JetsnackGradientTintedIconButton(
     onClick: () -> Unit,
     contentDescription: String?,
     modifier: Modifier = Modifier,
-    colors: List<Color> = JetsnackTheme.colors.interactiveSecondary
+    colors: List<Color> = JetsnackTheme.colors.interactiveSecondary,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
 
@@ -52,7 +52,7 @@ fun JetsnackGradientTintedIconButton(
     val border = Modifier.fadeInDiagonalGradientBorder(
         showBorder = true,
         colors = JetsnackTheme.colors.interactiveSecondary,
-        shape = CircleShape
+        shape = CircleShape,
     )
     val pressed by interactionSource.collectIsPressedAsState()
     val background = if (pressed) {
@@ -65,14 +65,14 @@ fun JetsnackGradientTintedIconButton(
         Modifier.diagonalGradientTint(
             colors = listOf(
                 JetsnackTheme.colors.textSecondary,
-                JetsnackTheme.colors.textSecondary
+                JetsnackTheme.colors.textSecondary,
             ),
-            blendMode = blendMode
+            blendMode = blendMode,
         )
     } else {
         Modifier.diagonalGradientTint(
             colors = colors,
-            blendMode = blendMode
+            blendMode = blendMode,
         )
     }
     Surface(
@@ -80,22 +80,22 @@ fun JetsnackGradientTintedIconButton(
             .clickable(
                 onClick = onClick,
                 interactionSource = interactionSource,
-                indication = null
+                indication = null,
             )
             .clip(CircleShape)
             .then(border)
             .then(background),
-        color = Color.Transparent
+        color = Color.Transparent,
     ) {
         Icon(
             imageVector = imageVector,
             contentDescription = contentDescription,
-            modifier = modifierColor
+            modifier = modifierColor,
         )
     }
 }
 
-//@Preview
+// @Preview
 @Composable
 private fun GradientTintedIconButtonPreview() {
     JetsnackTheme {
@@ -103,7 +103,7 @@ private fun GradientTintedIconButtonPreview() {
             imageVector = Icons.Default.Add,
             onClick = {},
             contentDescription = "Demo",
-            modifier = Modifier.padding(4.dp)
+            modifier = Modifier.padding(4.dp),
         )
     }
 }

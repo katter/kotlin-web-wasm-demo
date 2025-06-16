@@ -22,7 +22,7 @@ actual class MppJetsnackAppState(
     actual val snackbarManager: SnackbarManager,
     actual val coroutineScope: CoroutineScope,
     val navController: NavHostController,
-    val resources: Resources
+    val resources: Resources,
 ) {
 
     init {
@@ -48,7 +48,6 @@ actual class MppJetsnackAppState(
         get() = HomeSections.values()
     actual val currentRoute: String?
         get() = navController.currentDestination?.route
-
 
     @Composable
     actual fun shouldShowBottomBar(): Boolean {
